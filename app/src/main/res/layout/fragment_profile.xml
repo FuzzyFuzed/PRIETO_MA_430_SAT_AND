@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="16dp"
+    tools:context=".ui.profile.ProfileFragment">
+
+    <!-- App Logo -->
+    <ImageView
+        android:id="@+id/financexLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/financexlogo"
+        android:contentDescription="@string/app_name" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/profileTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:text="@string/profile"
+        android:textColor="@color/blue_primary"
+        android:textSize="22sp"
+        android:fontFamily="@font/poppins_bold" />
+
+    <!-- Profile Image -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_username" />
+
+    <!-- User Info Container -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Username -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/username"
+                android:textColor="@color/blue_dark"
+                android:textSize="14sp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins_medium" />
+
+            <EditText
+                android:id="@+id/profileUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_rounded_box"
+                android:hint="@string/username"
+                android:textColorHint="@color/light_blue"
+                android:textColor="@color/black"
+                android:padding="12dp"
+                android:maxLength="15"
+                android:textSize="13sp"
+                android:fontFamily="@font/poppins_regular" />
+
+            <!-- Email -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textColor="@color/blue_dark"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_medium" />
+
+            <EditText
+                android:id="@+id/profileEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_rounded_box"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:enabled="false"
+                android:focusable="false"
+                android:textSize="13sp"
+                android:fontFamily="@font/poppins_regular" />
+
+            <!-- Password Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/change_password"
+                android:textColor="@color/blue_dark"
+                android:textSize="15sp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_bold" />
+
+            <EditText
+                android:id="@+id/profileOldPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:layout_marginTop="8dp"
+                android:hint="@string/old_password"
+                android:background="@drawable/blue_rounded_box"
+                android:textColorHint="@color/light_blue"
+                android:padding="12dp"
+                android:fontFamily="@font/poppins_regular" />
+
+            <EditText
+                android:id="@+id/profileNewPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:layout_marginTop="10dp"
+                android:hint="@string/new_password"
+                android:background="@drawable/blue_rounded_box"
+                android:textColorHint="@color/light_blue"
+                android:padding="12dp"
+                android:fontFamily="@font/poppins_regular" />
+
+            <EditText
+                android:id="@+id/profileConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:layout_marginTop="10dp"
+                android:hint="@string/confirm_password"
+                android:background="@drawable/blue_rounded_box"
+                android:textColorHint="@color/light_blue"
+                android:padding="12dp"
+                android:fontFamily="@font/poppins_regular" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/profileSubmitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/blue_rounded_button"
+        android:text="@string/save_changes"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppins_bold" />
+</LinearLayout>

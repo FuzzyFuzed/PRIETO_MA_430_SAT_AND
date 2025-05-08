@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="8dp"
+    android:weightSum="3"
+    android:background="@drawable/blue_background"> <!-- Custom blue background -->
+
+    <!-- Expense Name TextView -->
+    <TextView
+        android:id="@+id/tvExpenseName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/dm_sans"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="16sp" /> <!-- Adjusted text size -->
+
+    <!-- Expense Cost TextView -->
+    <TextView
+        android:id="@+id/tvExpenseCost"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/dm_sans"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="16sp" /> <!-- Adjusted text size -->
+
+    <!-- Edit and Delete Buttons -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Edit Button -->
+        <ImageButton
+            android:id="@+id/btnEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/edit"
+            android:src="@drawable/ic_blue_edit"
+        app:tint="@color/blue_light" />
+
+        <!-- Delete Button -->
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/delete"
+            android:src="@drawable/ic_blue_delete"
+        app:tint="@color/blue_light" />
+    </LinearLayout>
+</LinearLayout>

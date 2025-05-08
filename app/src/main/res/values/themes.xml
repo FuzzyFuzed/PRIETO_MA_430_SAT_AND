@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.PrietoFinanceX" parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
+    <style name="BlueActiveIndicator">
+        <item name="android:color">@color/blue_primary</item>
+        <item name="android:shape">oval</item>
+    </style>
+</resources>
