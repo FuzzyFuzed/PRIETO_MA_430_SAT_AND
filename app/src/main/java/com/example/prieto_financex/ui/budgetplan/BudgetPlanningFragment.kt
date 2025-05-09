@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.prieto_financex.R
 import com.example.prieto_financex.data.locals.AppDatabaseHelper
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 
 class BudgetPlanningFragment : Fragment() {
@@ -101,7 +102,8 @@ class BudgetPlanningFragment : Fragment() {
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_add_budget_plan, null)
         val spinner = dialogView.findViewById<Spinner>(R.id.spinnerCategory)
         val etAmount = dialogView.findViewById<EditText>(R.id.etAmount)
-        val btnAdd = dialogView.findViewById<ImageView>(R.id.btnAddPlan)
+        val btnAdd = dialogView.findViewById<MaterialButton>(R.id.btnAddPlan)
+
 
         // Load categories for the spinner
         val categories = dbHelper.getCategoriesByUserId(userID!!)
