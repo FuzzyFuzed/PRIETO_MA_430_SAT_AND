@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
@@ -44,6 +43,9 @@ class BudgetPlanningFragment : Fragment() {
 
         if (user != null) {
             userID = user.userId
+        } else {
+            Toast.makeText(requireContext(), "User not found. Please log in again.", Toast.LENGTH_LONG).show()
+            return
         }
 
         // Initialize UI elements
@@ -52,7 +54,7 @@ class BudgetPlanningFragment : Fragment() {
         val expenseTextView = view.findViewById<TextView>(R.id.expenseTotalAmount)
         val totalBudgetTextView = view.findViewById<TextView>(R.id.userbudgettotaldisplay)
 
-        // Get total budget for user
+        // ✅ FIXED LINE 56 — Safe use of userID after null check
         val totalBudget = dbHelper.getTotalBudgetForUser(userID!!)
         totalBudgetTextView.text = "Php ${String.format("%,d", totalBudget)}"
 
@@ -73,16 +75,13 @@ class BudgetPlanningFragment : Fragment() {
                 val categoryId = categories[position]["itemID"]?.toIntOrNull() ?: return
                 selectedCategoryID = categoryId
 
-                // Display selected category budget
                 val budgetLimit = dbHelper.getTotalBudgetForItem(userID!!, selectedCategoryID!!)
                 budgetAmountTextView.text = "Php ${String.format("%,d", budgetLimit)}"
 
-                // Calculate and display expenses
                 val expenses = dbHelper.getExpensesByItemId(userID!!, categoryId)
                 val totalExpense = expenses.sumOf { it["expenseAmount"]?.toIntOrNull() ?: 0 }
                 expenseTextView.text = "Php ${String.format("%,d", totalExpense)}"
 
-                // Show warning if expenses exceed budget
                 val warningMessage = requireView().findViewById<TextView>(R.id.removableerrormessage)
                 warningMessage.visibility = if (totalExpense > budgetLimit) View.VISIBLE else View.GONE
             }
@@ -90,7 +89,6 @@ class BudgetPlanningFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
 
-        // Handle the "Add Budget Plan" button click
         val addBudgetBtn = view.findViewById<LinearLayout>(R.id.manageBudgetPlanButton)
         addBudgetBtn.setOnClickListener {
             showAddPlanDialog()
@@ -104,8 +102,6 @@ class BudgetPlanningFragment : Fragment() {
         val etAmount = dialogView.findViewById<EditText>(R.id.etAmount)
         val btnAdd = dialogView.findViewById<MaterialButton>(R.id.btnAddPlan)
 
-
-        // Load categories for the spinner
         val categories = dbHelper.getCategoriesByUserId(userID!!)
         val categoryNames = categories.map { it["itemName"] ?: "Unnamed" }
 
@@ -152,7 +148,6 @@ class BudgetPlanningFragment : Fragment() {
             }
 
             if (success) {
-                // Update UI with new budget details
                 val updatedLimit = dbHelper.getTotalBudgetForItem(userID!!, selectedCategoryID!!)
                 view?.findViewById<TextView>(R.id.budgetLimitAmount)?.text =
                     "₱${String.format("%,d", updatedLimit)}"
